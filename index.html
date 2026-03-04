@@ -1,18 +1,35 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/pencariankataquran/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>quran-app</title>
-    
-    <!-- PINDAHKAN KE SINI (Di bawah title, sebelum /head) -->
+    <title>Pencarian Kata Al-Qur'an</title>
+
+    <!-- SYARAT INSTAL: Manifest & Warna Tema -->
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="theme-color" content="#059669" />
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lateef:wght@400;700&display=swap');
+      .font-arabic { font-display: swap; }
+    </style>
     <script type="module" crossorigin src="/pencariankataquran/assets/index-DA9aOCD_.js"></script>
     <link rel="stylesheet" crossorigin href="/pencariankataquran/assets/index-tn0RQdqM.css">
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- SYARAT INSTAL: Mendaftarkan Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').catch(function(err) {
+            console.log('Service Worker tidak dapat didaftarkan di lingkungan pratinjau ini:', err);
+          });
+        });
+      }
+    </script>
   </body>
 </html>
